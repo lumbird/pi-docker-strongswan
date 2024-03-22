@@ -4,7 +4,7 @@
 apk update
 
 # Install StrongSwan and other required packages
-apk add strongswan strongswan-plugin-eap-mschapv2 moreutils kmod
+apk add strongswan moreutils kmod
 
 #===========
 # STRONG SWAN CONFIG
