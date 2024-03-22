@@ -10,8 +10,14 @@ COPY *.sh /
 # Make scripts executable
 RUN chmod a+x /*.sh
 
-# Run deployment script
-RUN /deploy.sh
+# Run install
+RUN /install.sh
+
+# Patch ipsec config
+RUN /patch-config.sh
+
+# Patch ipsec secrets
+RUN /patch-ipsec.sh
 
 # Move configuration files
 RUN mv /etc/ipsec.conf /etc/ipsec.secrets /etc/strongswan.conf /etc/ipsec.d/

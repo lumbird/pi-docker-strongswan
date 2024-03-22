@@ -1,15 +1,3 @@
-#!/bin/sh
-
-# Update system
-apk update
-
-# Install StrongSwan and other required packages
-apk add strongswan moreutils kmod
-
-#===========
-# STRONG SWAN CONFIG
-#===========
-
 # Create /etc/ipsec.conf
 cat << EOF > /etc/ipsec.conf
 config setup
@@ -36,9 +24,4 @@ conn ikev2-vpn
     rightdns=8.8.8.8,8.8.4.4
     rightsourceip=10.0.0.0/24
     authby=secret
-EOF
-
-# Add secrets to /etc/ipsec.secrets
-cat << EOF > /etc/ipsec.secrets
-: PSK "SHARED_KEY"
 EOF
