@@ -1,18 +1,16 @@
-#! /bin/sh
+#!/bin/sh
 
-# update system
-apt-get update
+# Update system
+apk update
 
-# skips interactive dialog for iptables-persistent installer
-export DEBIAN_FRONTEND=noninteractive
-apt-get -y install strongswan strongswan-plugin-eap-mschapv2 moreutils kmod
+# Install StrongSwan and other required packages
+apk add strongswan strongswan-plugin-eap-mschapv2 moreutils kmod
 
-#=========== 
+#===========
 # STRONG SWAN CONFIG
 #===========
 
-## Create /etc/ipsec.conf
-
+# Create /etc/ipsec.conf
 cat << EOF > /etc/ipsec.conf
 config setup
     charondebug="ike 1, knl 1, cfg 0"
@@ -40,9 +38,7 @@ conn ikev2-vpn
     authby=secret
 EOF
 
-## add secrets to /etc/ipsec.secrets
+# Add secrets to /etc/ipsec.secrets
 cat << EOF > /etc/ipsec.secrets
-
 : PSK "SHARED_KEY"
 EOF
-
