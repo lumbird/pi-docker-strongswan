@@ -21,7 +21,7 @@ This guide will walk you through setting up a strongSwan IKEv2 VPN server using 
 2. Build the Docker image:
 
     ```bash
-    docker build -t strongswan https://github.com/lumbird/pi-docker-strongswan
+    docker build -t strongswan .
     ```
 
 ### After building the docker image
